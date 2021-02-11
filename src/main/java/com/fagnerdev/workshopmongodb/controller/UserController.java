@@ -1,6 +1,7 @@
 package com.fagnerdev.workshopmongodb.controller;
 
 
+import com.fagnerdev.workshopmongodb.domain.Post;
 import com.fagnerdev.workshopmongodb.domain.User;
 import com.fagnerdev.workshopmongodb.dto.UserDTO;
 import com.fagnerdev.workshopmongodb.services.UserService;
@@ -55,6 +56,12 @@ public class UserController {
         obj.setId(id);
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
