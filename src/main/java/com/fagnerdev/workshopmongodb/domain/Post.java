@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Document
-public class Post implements Serializable {
+public class Post implements Serializable{
 
     public static final long serialVersionUID = 1L;
 
