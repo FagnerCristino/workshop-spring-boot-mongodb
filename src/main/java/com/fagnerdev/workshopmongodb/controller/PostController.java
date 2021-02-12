@@ -1,6 +1,7 @@
 package com.fagnerdev.workshopmongodb.controller;
 
 
+import com.fagnerdev.workshopmongodb.controller.util.URL;
 import com.fagnerdev.workshopmongodb.domain.Post;
 import com.fagnerdev.workshopmongodb.domain.User;
 import com.fagnerdev.workshopmongodb.dto.UserDTO;
@@ -28,6 +29,14 @@ public class PostController {
                    Post obj = userService.findById(id);
             return ResponseEntity.ok().body(obj);
         }
+
+    @GetMapping(value = "/titlesearch")
+    public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
+        text = URL.decodeParam(text);
+        List<Post> list = userService.findByTitle(text);
+        return ResponseEntity.ok().body(list);
+    }
+
 
 
 
